@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+
+const secretCode = 'maruja'
+const pressed = []
+
+
+window.addEventListener('keyup', e => {
+    console.log(pressed)
+    pressed.push(e.key)
+    /* se para al final del array y cuenta "hacia adelante" el número que le pasemos
+    ** en este caso el largo del array del codigo secreto - 1 * 7
+    ** el segundo parámetro es la cantidad de elementos que tiene que borrar
+    ** el largo total del array de teclas presionadas - el largo del array del código secreto
+    */
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
+    if (pressed.join('').includes(secretCode)) {
+        cornify_add()
+    }
+    console.log(pressed)
+})
+
+</script>
+</body>
+</html>
